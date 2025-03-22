@@ -1,0 +1,72 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0">URL Shortener</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- Flash messages -->
+                        {% if get_flashed_messages() %}
+                            {% for message in get_flashed_messages() %}
+                                <div class="alert alert-danger">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        
+                        <!-- URL shortening form -->
+                        <form action="{{ url_for('shorten') }}" method="post">
+                            <div class="input-group mb-3">
+                                <input type="text" name="url" class="form-control" placeholder="Enter your URL here" required>
+                                <button class="btn btn-primary" type="submit">Shorten</button>
+                            </div>
+                        </form>
+                        
+                        <!-- Display shortened URL if available -->
+                        {% if short_url %}
+                            <div class="mt-4">
+                                <div class="alert alert-success">
+                                    <h5>Your shortened URL:</h5>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="shortUrl" value="{{ short_url }}" readonly>
+                                        <button class="btn btn-secondary" onclick="copyToClipboard()">Copy</button>
+                                    </div>
+                                    <p class="mt-2"><small>Original URL: {{ original_url }}</small></p>
+                                    <div class="alert alert-warning mt-3">
+                                        <!-- <p class="mb-0"><small><strong>Note:</strong> For testing purposes, use <a href="{{ actual_url }}" target="_blank">{{ actual_url }}</a> as the actual URL.</small></p> -->
+                                        <p class="mb-0"><small><strong>Note:</strong> For testing purposes, use <a href="{{ actual_url }}" target="_blank">
+                                            {{ short_url }}
+                                        </a> as the actual URL.</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="text-center mt-4">
+                            <a href="{{ url_for('analytics') }}" class="btn btn-outline-primary">View Analytics</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard() {
+            var shortUrlField = document.getElementById("shortUrl");
+            shortUrlField.select();
+            document.execCommand("copy");
+            alert("Copied to clipboard: " + shortUrlField.value);
+        }
+    </script>
+</body>
+</html>
