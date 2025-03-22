@@ -31,13 +31,16 @@ This is a simple URL shortening service built using Python and Flask. It allows 
     ```
 
 2.  **Create Virtual Environment:**
+    ```bash
     python -m venv venv
     venv\Scripts\activate
+    ```
     
 
 3.  **Install Dependencies:**
-
+    ```bash
     pip install -r requirements.txt
+    ```
     
 
 4.  **Run the Application:**
