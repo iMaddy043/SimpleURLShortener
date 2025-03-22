@@ -26,30 +26,36 @@ This is a simple URL shortening service built using Python and Flask. It allows 
 
 1.  **Clone the Repository:**
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/iMaddy043/SimpleURLShortener.git
     cd SimpleURLShortener
     ```
-    (Replace `<repository_url>` with the actual repository URL if you're using version control.)
 
-2.  **Install Dependencies:**
-    (No external dependencies beyond what comes with python are needed)
+2.  **Create Virtual Environment:**
+    python -m venv venv
+    venv\Scripts\activate
+    
 
-3.  **Run the Application:**
+3.  **Install Dependencies:**
+
+    pip install -r requirements.txt
+    
+
+4.  **Run the Application:**
     ```bash
     python app.py
     ```
 
-4.  **Access the Application:**
+5.  **Access the Application:**
     Open your web browser and go to `http://127.0.0.1:5000/`.
 
 ## Usage
 
 1.  **Shorten a URL:**
-    *   Enter a long URL in the input field on the homepage.
-    *   Click the "Shorten" button.
-    *   The application will generate a shortened URL and display it.
-    * The shortened URL will be displayed with the custom domain.
-    * The actual URL that works will also be displayed.
+    *  Enter a long URL in the input field on the homepage.
+    *  Click the "Shorten" button.
+    *  The application will generate a shortened URL and display it.
+    *  The shortened URL will be displayed with the custom domain.
+    *  The actual URL that works will also be displayed.
 
 2.  **Access the Shortened URL:**
     *   Click on the displayed shortened URL (or copy and paste it into your browser).
